@@ -1,0 +1,50 @@
+<header id="header" class="initial_state">
+    <a href="/" id="logo"> </a>
+
+        <div id="options_bellow_search">
+            <a href="" id="contact">Contact me</a>
+        </div>
+       
+        <div id="header_btns">
+            <img src="/imgs/search_btn.svg" id="search_mobile_btn" 
+            onclick="
+            final_state('search');
+            final_state('search_translucid_screen');
+            ">
+
+            <img tabindex="1" src="/imgs/hamb_white.svg" id="hamb" 
+            onclick="final_state('menu_screen');
+                    final_state('menu')">
+        </div>
+   
+
+</header>
+
+
+
+<script>
+    function query_with_search_bar(event){
+        if(event.keyCode==13||event.clientX!=undefined){ //detect enter key to submit the form or if it is a click event
+            get_el('query_input_form').value = get_el('search_input').value
+            document.query_form.submit()
+        }
+    }
+</script>
+
+<form action="/filter" name="query_form">
+    <input type="hidden" name="query" id="query_input_form">
+    <input type="hidden" name="query_only" value="true">
+</form>
+
+<div id="search_translucid_screen" class="initial_state" 
+    onclick="
+    initial_state('search')
+    initial_state('search_translucid_screen')
+    ">
+     <img src="/imgs/close_btn.svg" id="search_close_btn">
+    </div>
+    
+    <div id="search" class="initial_state">
+        <input type="text" id="search_input" onkeydown="query_with_search_bar(event)">
+        <img src="/imgs/search_btn2.svg" onclick="query_with_search_bar(event)">
+</div>

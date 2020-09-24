@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/imgs/logo.svg">
+    <link rel="shotcut icon" href="/imgs/logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The V store</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- javascript--- -->
+    <script src="/javascript/resize_control.js"> </script>
+    <script src="/javascript/scroll_control.js"> </script>
+    <script>
+        ///renaming functions
+        function get_el(el){
+            return document.getElementById(el)
+        }
+        ///animation control
+        function final_state(el){
+            get_el(el).classList.remove('initial_state')
+        }
+        function initial_state(el){
+            get_el(el).classList.add('initial_state')
+        }
+    </script>
+
+</head>
+
+<body>
+    {{> base/header_and_search}}
+    {{> base/menu}}
+    {{> base/menu_filter}}
+    <div id="scroll">V</div>
+
+    {{{body}}}
+    
+</body>
+
+</html>
+
+
+
+
+
+

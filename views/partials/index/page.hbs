@@ -1,0 +1,51 @@
+
+<div id="page">
+
+    <script>
+
+        function page_href(my_page){
+            my_page = parseInt(my_page)
+
+            const get_href = (to_page)=>{
+                //insert the page number in the url
+                const url = window.location.href
+                const arr = url.split("/")
+                const path_final = arr[arr.length-1]
+                let href = "/"+to_page+"/"+path_final
+                //go to container after click in button
+                if(!href.includes("#results_title"))href+="#results_title"
+                return href
+                }
+
+            const next = get_el('next_page');
+            const prev = get_el('prev_page')
+            if(next!=undefined)next.href = get_href(my_page+1)
+            if(prev!=undefined)prev.href = get_href(my_page-1)
+        }
+    </script>
+
+    {{#compare page 1}}
+    <a class="inactivated"> < </a>
+    {{else}}
+        <a href="" id="prev_page"> < </a>
+    {{/compare}}
+
+    
+    <div>Page: {{page}} of {{total_page}}</div> 
+    
+    {{#compare page total_page}}
+
+        <a class="inactivated"> > </a>
+        
+    {{else}}
+    
+        <a href="" id="next_page"> > </a>
+
+    {{/compare}}
+
+
+    <script>
+        page_href('{{page}}') 
+    </script>
+    
+</div>

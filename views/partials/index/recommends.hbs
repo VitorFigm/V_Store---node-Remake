@@ -1,0 +1,23 @@
+<script>
+    function limiting_name(id){
+        const el = get_el(id)
+        let name = el.innerHTML
+        name = name.slice(0,60) +"..."
+        el.innerHTML = name
+    }
+</script>
+
+<div class="product_container">
+    {{#each products }}
+            <a class="product" href="{{this.url}}" target="_blank" rel="noopener noreferrer">
+                <img src="/{{this.image}}" id="{{this.image}}">
+                <div id="product_content">
+                    <div class="name" id="{{this.image}}_name">{{this.title}}</div>
+                    <div class="price" id="{{this.image}}_price">${{this.price}}</div>
+                </div>
+            </a>
+        <script>
+            limiting_name("{{this.image}}_name")
+        </script>
+    {{/each}}
+</div>

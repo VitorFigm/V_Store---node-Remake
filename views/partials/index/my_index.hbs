@@ -1,0 +1,46 @@
+<section>
+    <div class="container" id="intro">
+
+       <h1>Hi, welcome to the V store, </h1>
+
+       <p>A cellphone shop simulator</p>
+
+   </div>
+   <div class="blank_interval"></div>
+   <script>
+    function results_names(){
+        get_el('results_title').innerHTML += ' "{{query}}" '+'{{filters}}'
+    }        
+    </script>
+   <div id="recommendation" class="container">
+        <div class="blank_interval"></div>
+        {{#compare query filter ""}}
+            <h1 id="results_title">Highest Rated</h1>
+        {{else}}
+            <h1 id="results_title"
+            >Results for:</h1>
+            <script>
+                results_names()
+            </script>
+        {{/compare}}
+        
+
+        <!----recommendations---->
+        {{>index/recommends}}
+        <!----pagination system---->
+        {{> index/page}}
+            
+            <h1>Help to find a cellphone</h1>
+            <div id="find_a_cell"
+            onclick="
+            final_state('menu_filter_screen')
+            final_state('menu_filter')
+             "
+            >find with filters</div>
+            <div class="blank_interval"></div>
+   </div>
+</section>
+
+
+
+
